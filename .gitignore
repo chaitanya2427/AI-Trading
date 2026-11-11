@@ -1,0 +1,53 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Environment and Secrets (CRITICAL: NEVER COMMIT SECRETS)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.token
+*.secret
+
+# Local Databases & Storage
+*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+data/cache/
+data/historical/
+data/instruments/*.csv.gz
+data/instruments/*.json
+
+# Logs
+logs/
+*.log
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+

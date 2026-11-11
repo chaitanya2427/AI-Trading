@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package com.upstox.marketdatafeeder.rpc.proto;
+
+message LTPC {
+  double ltp = 1;
+  int64 ltt = 2;
+  int64 ltq = 3;
+  double cp = 4;
+}
+
+message Quote {
+  int32 bq = 1;
+  double bp = 2;
+  int32 bno = 3;
+  int32 aq = 4;
+  double ap = 5;
+  int32 ano = 6;
+}
+
+message MarketLevel {
+  repeated Quote bidAskQuote = 1;
+}
+
+message OHLC {
+  double open = 1;
+  double high = 2;
+  double low = 3;
+  double close = 4;
+  int64 ts = 5;
+}
+
+message MarketOHLC {
+  repeated OHLC ohlc = 1;
+}
+
+message OptionGreeks {
+  double vega = 1;
+  double theta = 2;
+  double gamma = 3;
+  double delta = 4;
+  double iv = 5;
+}
+
+message FullFeed {
+  MarketLevel marketLevel = 1;
+  MarketOHLC marketOHLC = 2;
+  LTPC ltpc = 3;
+  OptionGreeks optionGreeks = 4;
+  double atp = 5;
+  int64 vtot = 6;
+  double oi = 7;
+}
+
+message Feed {
+  oneof FeedUnion {
+    LTPC ltpc = 1;
+    FullFeed fullFeed = 2;
+  }
+}
+
+message FeedResponse {
+  enum Type {
+    initial_feed = 0;
+    live_feed = 1;
+  }
+  Type type = 1;
+  map<string, Feed> feeds = 2;
+}
+
